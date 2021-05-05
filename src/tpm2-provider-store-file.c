@@ -73,7 +73,7 @@ tpm2_file_attach(void *provctx, OSSL_CORE_BIO *cin)
     ctx->core = cprov->core;
     ctx->esys_ctx = cprov->esys_ctx;
 
-    if ((ctx->bin = bio_new_from_core_bio(cprov->corebiometh, cin)) == NULL)
+    if ((ctx->bin = BIO_new_from_core_bio(cprov->libctx, cin)) == NULL)
         goto error;
 
     /* decoding will require tell-seek operations */
